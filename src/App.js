@@ -4,7 +4,7 @@ import { Homepage } from "./components/Homepage";
 import { LoginPage } from "./components/LoginPage";
 
 const App = () => (
-  <div className="App">
+  <div className="App ui container">
     <Route path="/" exact component={Homepage} />
     <Route path="/login" component={LoginPage} />
   </div>
