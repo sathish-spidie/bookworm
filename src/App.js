@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { Homepage } from "./components/pages/Homepage";
-import { LoginPage } from "./components/pages/LoginPage";
+import LoginPage from "./components/pages/LoginPage";
 
 const App = () => (
   <div className="App ui container">
