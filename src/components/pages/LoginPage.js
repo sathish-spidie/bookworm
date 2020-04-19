@@ -15,7 +15,7 @@ class LoginPage extends Component {
   submit = (data) => {
     this.props
       .login(data)
-      .then(() => this.props.history.push("/"))
+      .then(() => this.props.history.push("/dashboard"))
       .catch((err) => 
         this.setState({ errors: err.response.data.errors })
         );
