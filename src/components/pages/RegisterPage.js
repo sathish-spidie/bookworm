@@ -2,9 +2,9 @@ import MyForm from "../forms/MyForm";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import { register } from "../../actions/register";
 
-class LoginPage extends Component {
+class RegisterPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,27 +14,27 @@ class LoginPage extends Component {
 
   submit = (data) => {
     this.props
-      .login(data)
-      .then(() => this.props.history.push("/"))
-      .catch((err) => 
+      .register(data).then(res=>console.log(res))
+      .then(() => this.props.history.push("/login"))
+      .catch((err) =>
         this.setState({ errors: err.response.data.errors })
         );
   };
   render() {
     return (
       <div>
-        <h1>Login Page</h1>
-        <MyForm button="Login" errors={this.state.errors} submit={this.submit} />
+        <h1>Register Page</h1>
+        <MyForm button="Register" errors={this.state.errors} submit={this.submit} />
       </div>
     );
   }
 }
 
-LoginPage.propTypes = {
-  history: PropTypes.shape({
+
+RegisterPage.propTypes = {
+history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-
-export default connect(null,{login})(LoginPage);
+export default connect(null,{register})(RegisterPage);

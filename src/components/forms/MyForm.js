@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Validator from "validator";
 import InlineError from "../messages/InlineError";
 
-class LoginForm extends React.Component {
+class MyForm extends React.Component {
   state = {
     data: {
       email: "",
@@ -76,20 +76,15 @@ class LoginForm extends React.Component {
               <InlineError text={errors.password} />
             )}
           </Form.Field>
-          <Button primary>Login</Button>
+          <Button primary>{this.props.button}</Button>
         </Form>
       </div>
     );
   }
 }
 
-LoginForm.propTypes = {
+MyForm.propTypes = {
   submit: PropTypes.func.isRequired,
 };
 
-export default LoginForm;
-// .catch((err) =>
-//         this.setState({
-//           errors: err.response.data.errors,
-//         })
-//       );
+export default MyForm;
