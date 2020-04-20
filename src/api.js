@@ -8,7 +8,7 @@ export default {
 				.then((res) => res.data.user),
 		register: (credentials) =>
 			axios
-				.post("api/user/register", { credentials })
+				.post("api/users", { credentials })
 				.then((res) => res.data.user)
 	},
 };

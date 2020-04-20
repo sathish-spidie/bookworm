@@ -3,6 +3,7 @@ import { Form, Button, Message } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Validator from "validator";
 import InlineError from "../messages/InlineError";
+// import _ from "lodash";
 
 class MyForm extends React.Component {
   state = {
@@ -41,13 +42,28 @@ class MyForm extends React.Component {
   };
   render() {
     const { data, errors } = this.state;
+    const myerrors = this.props.errors;
+    let errMessage = "";
+    if (myerrors) {
+      let errors = [];
+      // eslint-disable-next-line
+      for (let [key, value] of Object.entries(myerrors)) {
+        errors.push(value);
+      }
+      if (errors.length > 1) {
+        errMessage = `${errors[0]} ${errors[1]}`;
+      } else {
+        errMessage = errors[0];
+      }
+    }
+
     return (
       <div>
         <Form onSubmit={this.onSubmit}>
-          {this.props.errors.global && (
+          {errMessage && (
             <Message negative>
               <Message.Header>Something Went wrong</Message.Header>
-              <p>{this.props.errors.global}</p>
+              <p>{errMessage}</p>
             </Message>
           )}
           <Form.Field error={!!errors.email}>

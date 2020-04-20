@@ -8,9 +8,8 @@ const Homepage = ({ isAuthenticated, logout }) => {
   return (
     <div>
       <h1>Home Page</h1>
-      <span style={{ margin: "10px" }}>
-        <Link to="/register">Register</Link>
-      </span>
+      <Link to="/signup">Register</Link>
+      <span style={{ margin: "10px" }}>or</span>
       {isAuthenticated ? (
         <button onClick={() => logout()}>Logout</button>
       ) : (
