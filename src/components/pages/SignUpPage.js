@@ -15,7 +15,7 @@ class SignUpPage extends Component {
   submit = (data) => {
     this.props
       .signUp(data)
-      .then(() => this.props.history.push("/login"))
+      .then(() => this.props.history.push("/dashboard"))
       .catch((err) => this.setState({ errors: err.response.data.errors }));
   };
   render() {

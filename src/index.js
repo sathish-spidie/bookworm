@@ -10,16 +10,22 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import rootReducer from "./rootReducer";
-import {userLoggedIn} from "./actions/auth"
+import { userLoggedIn } from "./actions/auth";
+import decode from "jwt-decode";
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-if(localStorage.bookWormJWT){
-	const user ={ token : localStorage.bookWormJWT}
-	store.dispatch(userLoggedIn(user))
+if (localStorage.bookWormJWT) {
+  const payload = decode(localStorage.bookWormJWT);
+  const user = {
+    token: localStorage.bookWormJWT,
+    email: payload.email,
+    confirmed: payload.confirmed,
+  };
+  store.dispatch(userLoggedIn(user));
 }
 
 ReactDOM.render(
