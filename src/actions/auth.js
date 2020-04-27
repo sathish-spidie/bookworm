@@ -9,6 +9,9 @@ export const userLoggedIn = (user) => ({
 export const userLoggedOut = () => ({
 	type: USER_LOGGED_OUT,
 });
+
+r
+
 // ThunkAction
 export const login = (credentials) => (dispatch) =>
 	api.user.login(credentials).then((user) => {
@@ -21,8 +24,21 @@ export const logout = () => (dispatch) => {
 	dispatch(userLoggedOut());
 };
 
-export const confirm = (token) => (dispatch) =>
-	api.user.confirm(token).then((user) => {
+export const confirm = (url) => (dispatch) =>
+	api.user.confirm(url).then((user) => {
 		localStorage.bookWormJWT = user.token;
 		dispatch(userLoggedIn(user));
 	});
+
+export const forgotPasswordRequest = ({ email }) => () =>
+	api.user.forgotPasswordRequest(email);
+
+export const validateToken = (url) => (dispatch) =>
+	api.user.validateToken(url).then((res) => {
+		localStorage.validateJWT = res.data.user.validateToken;
+	});
+
+export const resetPassword = ({ password }, token) => () =>
+	api.user
+		.resetPassword(password, token)
+		.then(() => localStorage.removeItem("validateJWT"));

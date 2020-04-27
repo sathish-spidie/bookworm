@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const GuestRoute = ({ isAuthenticated, component: Component, ...rest }) => {
 	return (
 		<Route
-			{...rest}
+		{...rest}
 			render={(props) =>
 				!isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
 			}
