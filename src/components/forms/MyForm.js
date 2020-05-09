@@ -3,7 +3,6 @@ import { Form, Button, Message } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Validator from "validator";
 import InlineError from "../messages/InlineError";
-// import _ from "lodash";
 
 class MyForm extends React.Component {
   state = {
@@ -15,13 +14,13 @@ class MyForm extends React.Component {
     errors: {},
   };
 
-  onChange = (e) =>
-    this.setState({
-      data: {
-        ...this.state.data,
-        [e.target.name]: e.target.value,
-      },
-    });
+ onChange = (e) =>
+  this.setState({
+    data: {
+      ...this.state.data,
+      [e.target.name]: e.target.value,
+    },
+  });
   onSubmit = () => {
     const errors = this.validate(this.state.data);
     this.setState({ errors });

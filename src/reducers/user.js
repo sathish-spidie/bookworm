@@ -2,7 +2,6 @@ import {
 	USER_LOGGED_IN,
 	USER_LOGGED_OUT,
 	USER_REGISTER,
-	// VALIDATE_TOKEN,
 } from "../types";
 const initialState = {};
 
@@ -14,9 +13,6 @@ export default (state = initialState, { type, user }) => {
 			return {};
 		case USER_REGISTER:
 			return user;
-		// case VALIDATE_TOKEN:
-		// 	return user
-
 		default:
 			return state;
 	}

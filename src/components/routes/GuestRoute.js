@@ -18,7 +18,7 @@ const mapStateToProps = (state) => ({ isAuthenticated: !!state.user.token });
 
 GuestRoute.propTypes = {
 	isAuthenticated: PropTypes.bool.isRequired,
-	component: PropTypes.object.isRequired,
+	// component: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, null)(GuestRoute);
